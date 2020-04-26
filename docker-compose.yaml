@@ -1,0 +1,40 @@
+version: '3.5'
+
+services:
+
+  koha-db:
+    container_name: koha-db
+    image: mariadb:latest
+    restart: always
+    volumes:
+      - koha-db:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: koha
+
+  koha:
+    container_name: koha
+    build: ./koha
+    restart: always
+    volumes:
+      - koha:/etc/share/koha
+      - koha:/var/log/koha
+      - koha:/var/log/apache2
+    cap_add:
+        - SYS_NICE
+        - DAC_READ_SEARCH
+    depends_on:
+        - koha-db
+    environment:
+      LIBRARY_NAME: koha
+      SLEEP: 3
+      INTRAPORT: 8080
+      DB_HOST: koha-db
+      DB_ROOT_PASSWORD: koha
+      MASTER_PASSWORD: koha123
+    ports:
+      - "80:80"
+      - "8080:8080"
+
+volumes:
+  koha-db:
+  koha:
