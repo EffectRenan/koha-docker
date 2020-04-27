@@ -1,3 +1,5 @@
+**Docker image:** docker pull docker.pkg.github.com/effectrenan/koha-docker/koha:latest
+
 **docker-compose.yaml**
 
 DB_ROOT_PASSWORD and MYSQL_ROOT_PASSWORD: Root's password of MariaDB.
