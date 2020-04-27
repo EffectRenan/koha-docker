@@ -13,7 +13,7 @@ services:
 
   koha:
     container_name: koha
-    image: docker.pkg.github.com/effectrenan/koha/koha:latest
+    image: docker.pkg.github.com/effectrenan/koha-docker/koha:latest
     #build: ./koha
     restart: always
     volumes:
