@@ -17,9 +17,7 @@ services:
     #build: ./koha
     restart: always
     volumes:
-      - koha:/etc/share/koha
-      - koha:/var/log/koha
-      - koha:/var/log/apache2
+      - koha:/var/lib/koha/
     cap_add:
         - SYS_NICE
         - DAC_READ_SEARCH
